@@ -1,4 +1,5 @@
-public static void main(String[] args) 
+   
+ public static void main(String[] args) 
     {
         String rescue_truck_operation_choice="1";
         Scanner sc_choice= new Scanner(System.in);
