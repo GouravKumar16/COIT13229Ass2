@@ -1,0 +1,52 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class NEMAClientApplication extends JFrame {
+    private JButton queryButton;
+    private JTextArea resultTextArea;
+
+    public NEMAClientApplication() {
+        setTitle("NEMA Client Application");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        queryButton = new JButton("Run Query");
+        queryButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Perform the database query and retrieve the results
+                String queryResult = runQuery();
+                // Display the query result in the text area
+                resultTextArea.setText(queryResult);
+            }
+        });
+
+        resultTextArea = new JTextArea();
+        resultTextArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(resultTextArea);
+
+        add(queryButton, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
+
+        pack();
+        setVisible(true);
+    }
+
+    private String runQuery() {
+        // Code for connecting to the database and executing the query
+        // Replace this with your actual database query code
+        // Here's an example that simulates a database query
+        String queryResult = "Fire Event 1\nSeverity: High\nLocation: City A\n\n" +
+                "Fire Event 2\nSeverity: Medium\nLocation: City B\n\n" +
+                "Fire Event 3\nSeverity: Low\nLocation: City C\n";
+
+        return queryResult;
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new NEMAClientApplication();
+            }
+        });
+    }
